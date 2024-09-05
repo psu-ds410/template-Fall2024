@@ -35,6 +35,7 @@ Sign into github. Then go here https://classroom.github.com/a/MW_nVZfd and use y
   <!--
 *   If you get a weird message about divergent histories, type **git config pull.rebase false** then type **source ./updatestarter** again.
 --> 
+*   You might see a weird text editor in your terminal. At the bottom it should say something like press ctrl-X to save (do that).
 *   If you get a message like this:
 ```
  On branch main
