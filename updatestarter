@@ -2,6 +2,9 @@
 # source ./updatestarter
 # and that's it. 
 
-git fetch startercode
-git checkout main
-git merge startercode/main
+# git fetch startercode
+# git checkout main
+# git merge startercode/main
+
+git pull startercode main --allow-unrelated-histories
+
