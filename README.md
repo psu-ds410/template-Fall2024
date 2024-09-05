@@ -10,11 +10,11 @@
 Github does not allow password authentication from the command line. Instead, you will need to use an access token in place of a password. To learn how to make one, go here: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token . For easiest results, use the _classic_ token and click the "repo" box (make sure to set expiration date after the semester and final are over). More adventurous students can try the (better) fine-grained token. For fine-grained tokens, choose "only select repositories" and select your github classroom repository (see below), then in "Permissions" find "Contents" and select "read and write" access.
 
 # Step 1: Create your google classroom assignment repository:
-Sign into github. Then go here https://classroom.github.com/a/TjOrC3yY and use your psu email address to join.
+Sign into github. Then go here https://classroom.github.com/a/MW_nVZfd and use your psu email address to join (or click "skip this step").
 
 # Step 2: Do this every time you are asked to clone your repository.
 *  Open up a terminal, connect to our cluster, and navigate to the folder you want to contain your repository.
-*  Type ```git clone https://github.com/psu-cmpscds410/homework-Fall2024-[github-username].git ds410hw```
+*  Type ```git clone https://github.com/psu-ds410/hws-fall2024-[github-username].git ds410hw```
    *   🤦 alert: do not literally type in "[github-username]" <---- means to put in your actual github user name (no square brackets).
    *   Use your **access token**, not your **password** when you are asked to authenticate. If you want to copy/paste, do **not** use ctrl-c. Just right click on your terminal and use the paste option. The token will not appear visibly when you type it or copy/paste it (you will not see stars ******* either).
    *   You will now see a new folder called ds410hw. Congratulation 🎉 you have cloned the repository, but you are not done yet.
@@ -71,7 +71,7 @@ The command is
 
 The instructions at the beginning explained exactly which repository to clone.
 
-**Important:** you can also access your repository on the web: `https://github.com/psu-cmpscds410/homework-Fall2024-[your-github-username]` (🤦 alert)
+**Important:** you can also access your repository on the web: `https://github.com/psu-ds410/hws-fall2024-[your-github-username]` (🤦 alert)
 which is useful because it shows the contents of your remote repository and you can check whether it has what you think it has.
 
 ## Staging files (git status and git add)
