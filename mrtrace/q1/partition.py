@@ -1,6 +1,6 @@
 import hashlib
 
-def what_would_partitioner_do(idname, keys, numreducers):
+def what_would_partitioner_do(idname, key, numreducers):
     """ This function tells us what the partitioner would do in our 
     hypothetical setup for tracing through a mapreduce program.
 
@@ -8,18 +8,17 @@ def what_would_partitioner_do(idname, keys, numreducers):
     want to know which reducers will be assigned to the keys "hello", "world", and 3
     Then you would call this function like this:
     
-    what_would_partitioner_do("abc1234", ["hi", "worlds", 5, "5"], 4)
-    
-    and it will return you a list like [1, 1, 3, 2] which means "hi" and "worlds" would be sent 
-    to reducer 1, the number 5 to reducer 3 and the string "5" to reducer 2.
+    what_would_partitioner_do("abc1234", "hi", 4) # returns 1 (i.e. it will go to reducer 1)
+    what_would_partitioner_do("abc1234", "worlds", 4)  #returns 1
+    what_would_partitioner_do("abc1234", 5, 4)  # returns 3
+    what_would_partitioner_do("abc1234", "5", 4)  # returns 2
+    what_would_partitioner_do("abc1234", ["a", 7], 4) # returns 2
+
+    IMPORTANT: be super careful about the types: 5 and "5" are different things (the first is a string, the second is a number). '["a", 7]' and ["a", 7] are different things (the first is a string, the second is a list)
+
     """
-    multiple = isinstance(keys, list)
-    keylist = keys if multiple else [keys] 
-    result = [makehash(f"{idname}|{type(k)}|{k}") % numreducers for k in keylist]
-    if multiple:
-        return result
-    else:
-        return result[0]
+    result = makehash(f"{idname}|{type(key)}|{key}") % numreducers
+    return result
 
 
 def makehash(k):
