@@ -37,6 +37,7 @@ def checkfile(filename):
                 print(f"file: {filename}, line: {line_number}: value or value list has improper format")
                 printformat()
                 return False
+    return True
 
 def printformat():
     print(r"""This item should be JSON formatted. That means:
