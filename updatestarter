@@ -8,6 +8,7 @@
 
 git config pull.rebase false
 git remote add startercode https://github.com/psu-ds410/template-Fall2024
+echo "It is ok to see the message: error: remote startercode already exists. "
 
 git pull startercode main --allow-unrelated-histories
 
