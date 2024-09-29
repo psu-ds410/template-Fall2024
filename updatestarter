@@ -6,5 +6,8 @@
 # git checkout main
 # git merge startercode/main
 
+git config pull.rebase false
+git remote add startercode https://github.com/psu-ds410/template-Fall2024
+
 git pull startercode main --allow-unrelated-histories
 
