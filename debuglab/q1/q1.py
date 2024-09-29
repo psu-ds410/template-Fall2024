@@ -1,20 +1,22 @@
 from mrjob.job import MRJob   
 
-class City(MRJob):  # Choose a good class name
-    def mapper(self, key, line): # when reading a text file from hdfs, key is None and value is the line of text
-        parts = line.split("\t")
-        city = parts[0]
-        state = parts[2]
-        population = parts[4]
-        zipcodes = parts[5].split(" ") # parts[5] is a list of space separated zip codes
-        yield state, (population, len(zipcodes))
+class BadClassName(MRJob): 
+    """ The goal of this mapreduce job is to use the data files in /dataset/orders
+    to compute, for every customer id, the country and total quantity of items bought by 
+    the customer. So, when the job is finished, each line of the output should contain
+    customer id (key) and [country, totalquantity] as the value  """
 
-    def reducer(self, state, values):
-        num_cities = len(values)
-        for (p,z) in values:
-            population += p # update the population
-            maxzips = max(maxzips, z) # update the maximum number of zip codes in a city in the state.
-        yield state, (num_cities, population, maxzips)
+    def mapper(self, key, line):
+        (customerid, country) = line.split()
+        (invoiceno, quantity, customerid) = line.split("\t")
+        invoiceno = int(invoiceno)
+        yield (customerid, country, quantity, invoiceno)
+    
+
+    def reducer(self, customerid, values):
+        country = values[0]
+        total_quantity = sum(values[1:])
+        yield customerid, (country, total_quantity)
 
 if __name__ == '__main__':
-    City.run()  # if you don't have these two lines, your code will not do anything 
+    WordCount.run()  
