@@ -10,7 +10,7 @@ object Q2 {
         val sc = getSC()  // one function to get the sc variable
         val myrdd = getRDD(sc) // on function to get the rdd
         val counts = doCity(myrdd) // additional functions to do the computation
-        saveit(counts, "finalrdd")  // save the rdd to your home directory in HDFS
+        saveit(counts, "everything_q2")  // save the rdd to your home directory in HDFS
     }
 
     def getSC(): SparkContext = {
